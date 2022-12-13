@@ -8,9 +8,8 @@ My GitHub page is http://github.com/keigon20.
 
 ### CPSC 120
 
-* Lab 7
+* Lab 3
 
-    Lab 7, part 2 was a favorite because I was always curious about how the
-    game Blackjack works. I was able to write functions for the first time
-    that calculate the correct value of a Blackjack hand no matter how many
-    Aces were dealt.
+    I enjoyed Lab 3, part 3 because I remember coding a similar number guessing game with my dad. However, I wrote the game in python. So, I had a good understanding of the logic behind the code, but had to write it using C++. In this lab, we used if statements to make the game.
+
+* Lab 
