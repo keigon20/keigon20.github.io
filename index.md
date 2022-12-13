@@ -16,4 +16,6 @@ My GitHub page is http://github.com/keigon20.
 
     Lab 5, part 1 was memorible because it was the first lab where I learned to take arguments from the command line and use it in the program. Learning this was important because most of the labs after lab 5 required me to read command line arguments. I enjoyed this lab because I thought the concept of taking arguments from the command line and using it in the program was more efficient and interesting.
 
-* Lab 
+* Lab 7
+
+    Lab 7, part 2 was one of my favorite labs because I used to play blackjack with my friends often. So, building a program that calculates the score of a blackjack hand was fun. I learned hwo to create functions and use them in the main function.
