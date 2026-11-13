@@ -1,11 +1,15 @@
-// Cloudflare Worker that serves the static Astro build.
-// Build-time variables (e.g. PUBLIC_SETLY_CONCERTS_URL) are set in the dashboard under
-// Settings → Build → Variables and secrets, not in "vars" below (those are runtime-only).
+// Cloudflare Worker: serves the static Astro build, plus small APIs in worker/index.ts.
+// Build-time variables are set in the dashboard under Settings → Build → Build variables and secrets,
+// not in "vars" below (those are runtime-only).
 {
   "name": "keigon20-github-io",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-11-01",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Only these paths run the Worker script; everything else is served straight from ./dist.
+    "run_worker_first": ["/api/*"]
   },
   "vars": {}
 }

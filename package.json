@@ -7,11 +7,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "new": "node scripts/new-post.mjs"
+    "new": "node scripts/new-post.mjs",
+    "preview:worker": "astro build && wrangler dev"
   },
   "dependencies": {
     "@astrojs/preact": "^6.1.5",
     "astro": "^7.4.11",
     "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.161.0"
   }
 }

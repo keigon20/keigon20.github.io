@@ -239,3 +239,26 @@ body { font-family: var(--font); -webkit-font-smoothing: antialiased; }
 .note-bar { display: flex; justify-content: space-between; margin-bottom: 18px; }
 .note-title { font-size: 32px; letter-spacing: -0.03em; line-height: 1.1; margin: 4px 0 20px; }
 .note-read .prose { font-size: 16px; }
+
+/* Ducks widget */
+.score { gap: 8px; font-size: 15px; }
+.score > span { display: inline-flex; align-items: baseline; gap: 5px; font-weight: 600; opacity: 0.75; }
+.score > span.us { opacity: 1; color: #fc4c02; }
+.score > span b { font-size: 24px; font-variant-numeric: tabular-nums; color: var(--glass-text); }
+.score > i { font-style: normal; opacity: 0.4; }
+.live-dot { display: inline-flex; align-items: center; gap: 4px; margin-left: 6px; color: #ff3b30; text-transform: uppercase; }
+.live-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #ff3b30; animation: blink 1.4s infinite; }
+@keyframes blink { 50% { opacity: 0.3; } }
+@media (prefers-reduced-motion: reduce) { .live-dot::before { animation: none; } }
+.w-tag { margin-left: 6px; opacity: 0.8; }
+.next-game .w-title { font-size: 20px; letter-spacing: -0.01em; }
+.standings { width: 100%; margin-top: 12px; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+.standings caption { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.65; padding: 8px 0 4px; border-top: 1px solid rgba(127, 127, 127, 0.25); }
+.standings th { font-weight: 600; opacity: 0.55; text-align: right; padding: 2px 0; }
+.standings td { text-align: right; padding: 2px 0; }
+.standings th:nth-child(2), .standings td:nth-child(2) { text-align: left; padding-left: 8px; }
+.standings th:first-child, .standings td:first-child { text-align: left; width: 1.5em; opacity: 0.6; }
+.standings tr.us td { color: #fc4c02; font-weight: 700; }
+.standings tr.us td:first-child { opacity: 1; }
+.standings tr.cut td { border-bottom: 1px dashed rgba(127, 127, 127, 0.45); padding-bottom: 4px; }
+.standings tr.cut + tr td { padding-top: 4px; }
