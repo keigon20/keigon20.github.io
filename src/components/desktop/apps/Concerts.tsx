@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 
 // Data comes from Setly's `publicConcerts` Cloud Function (only non-hidden events).
-const URL = import.meta.env.PUBLIC_SETLY_CONCERTS_URL as string | undefined;
+// The URL is public, so a default is baked in; PUBLIC_SETLY_CONCERTS_URL can override it (e.g. for staging).
+const URL =
+  (import.meta.env.PUBLIC_SETLY_CONCERTS_URL as string | undefined) ||
+  'https://us-central1-setly-59268.cloudfunctions.net/publicConcerts';
 
 interface Concert {
   id: string;
