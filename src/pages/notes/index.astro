@@ -1,0 +1,31 @@
+---
+import NotesLayout from '../../layouts/NotesLayout.astro';
+import { getNotes, fmtDate, readingMinutes } from '../../data/notes';
+import { site } from '../../data/projects';
+
+const notes = await getNotes();
+---
+<NotesLayout title={`Notes — ${site.name}`} description="Posts and reports on what I build, what I learn, and baseball data.">
+  <div class="narrow">
+    <h1 class="notes-h1">Notes</h1>
+    <p class="notes-meta">Posts and reports on what I build, what I learn, and baseball data.</p>
+    {notes.length === 0 ? (
+      <p class="notes-meta">Nothing published yet.</p>
+    ) : (
+      <ol class="note-list">
+        {notes.map((n) => (
+          <li>
+            <span class="notes-meta" style="margin:0">
+              {n.data.kind === 'report' && <span class="kind">Report</span>}
+              {n.data.draft && <span class="draft">Draft</span>}
+              <time datetime={n.data.date.toISOString()}>{fmtDate(n.data.date)}</time>
+              <span>· {readingMinutes(n.body)} min read</span>
+            </span>
+            <h2><a href={`/notes/${n.id}`}>{n.data.title}</a></h2>
+            {n.data.summary && <p>{n.data.summary}</p>}
+          </li>
+        ))}
+      </ol>
+    )}
+  </div>
+</NotesLayout>

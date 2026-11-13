@@ -1,6 +1,9 @@
 ---
 import Desktop from '../components/desktop/Desktop';
 import { site } from '../data/projects';
+import { getNotes, toSummary } from '../data/notes';
+
+const notes = (await getNotes()).map(toSummary);
 ---
 <!doctype html>
 <html lang="en">
@@ -12,6 +15,6 @@ import { site } from '../data/projects';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <Desktop client:load />
+    <Desktop client:load notes={notes} />
   </body>
 </html>

@@ -3,6 +3,7 @@ import { projects, site } from '../../data/projects';
 import { work, education, clubs } from '../../data/resume';
 import Baseball from './apps/Baseball';
 import Concerts from './apps/Concerts';
+import Notes from './apps/Notes';
 
 export type AppId = 'welcome' | 'projects' | 'notes' | 'baseball' | 'concerts' | 'music' | 'resume' | 'mail';
 
@@ -91,7 +92,7 @@ export const apps: AppDef[] = [
     dock: true,
     width: 560,
     height: 400,
-    Content: () => <Soon what="Blog posts and reports will live here: what I build, what I learn, and baseball data write-ups." />,
+    Content: () => <Notes />,
   },
   {
     id: 'baseball',

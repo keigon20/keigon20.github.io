@@ -2,13 +2,16 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
 import { apps, appById, type AppId } from './apps';
 import Widgets from './Widgets';
+import { NotesContext } from './apps/Notes';
+import type { NoteSummary } from '../../data/notes';
 import './desktop.css';
+import '../../styles/prose.css';
 
 interface Win { id: AppId; x: number; y: number; z: number; min: boolean; max: boolean }
 
 const MOBILE = '(max-width: 760px)';
 
-export default function Desktop() {
+export default function Desktop({ notes = [] }: { notes?: NoteSummary[] }) {
   const [wins, setWins] = useState<Win[]>([{ id: 'welcome', x: 140, y: 70, z: 10, min: false, max: false }]);
   const [focused, setFocused] = useState<AppId | null>('welcome');
   const [time, setTime] = useState('');
@@ -106,6 +109,7 @@ export default function Desktop() {
   const activeTitle = focused ? appById(focused)?.title : 'Desktop';
 
   return (
+    <NotesContext.Provider value={notes}>
     <div class="desk">
       <header class="menubar">
         <div class="mb-left">
@@ -176,5 +180,6 @@ export default function Desktop() {
         <p class="noscript">This desktop needs JavaScript. <a href="/classic">View the classic site</a>.</p>
       </noscript>
     </div>
+    </NotesContext.Provider>
   );
 }

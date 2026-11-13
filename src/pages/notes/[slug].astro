@@ -1,0 +1,30 @@
+---
+import { render } from 'astro:content';
+import NotesLayout from '../../layouts/NotesLayout.astro';
+import { getNotes, fmtDate, readingMinutes, type Note } from '../../data/notes';
+import { site } from '../../data/projects';
+
+export async function getStaticPaths() {
+  const notes = await getNotes();
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+}
+
+const { note } = Astro.props as { note: Note };
+const { Content } = await render(note);
+const { title, date, summary, kind, tags, draft } = note.data;
+---
+<NotesLayout title={`${title} — ${site.name}`} description={summary || title}>
+  <article class="narrow">
+    <p class="notes-meta" style="margin-bottom:8px">
+      {kind === 'report' && <span class="kind">Report</span>}
+      {draft && <span class="draft">Draft</span>}
+    </p>
+    <h1 class="notes-h1">{title}</h1>
+    <p class="notes-meta">
+      <time datetime={date.toISOString()}>{fmtDate(date)}</time>
+      <span>· {readingMinutes(note.body)} min read</span>
+    </p>
+    <div class="prose"><Content /></div>
+    {tags.length > 0 && <ul class="tag-row" aria-label="Tags">{tags.map((t) => <li>{t}</li>)}</ul>}
+  </article>
+</NotesLayout>

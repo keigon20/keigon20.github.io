@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import '../styles/prose.css';
+import { site } from '../data/projects';
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/"><span class="brand-dot" aria-hidden="true"></span>{site.name}</a>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="/notes">Notes</a></li>
+            <li><a href="/">Desktop</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="notes-main"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {site.name}</span>
+        <a href="/notes">All notes</a>
+      </div>
+    </footer>
+    <style is:global>
+      .notes-main { padding: 64px 0 96px; }
+      .narrow { width: min(700px, 100% - 40px); margin-inline: auto; }
+      .notes-h1 { font-size: clamp(36px, 6vw, 56px); letter-spacing: -0.035em; line-height: 1.05; margin: 0 0 12px; }
+      .notes-meta { color: var(--muted); font-size: 15px; margin: 0 0 40px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
+      .kind { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+      .draft { font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 980px; background: #febc2e; color: #1d1d1f; }
+      .note-list { list-style: none; padding: 0; margin: 0; }
+      .note-list li { padding: 22px 0; border-top: 1px solid var(--line); }
+      .note-list h2 { font-size: 24px; letter-spacing: -0.02em; margin: 4px 0 6px; }
+      .note-list h2 a { color: var(--text); }
+      .note-list p { margin: 0; color: var(--muted); }
+      .tag-row { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 40px 0 0; }
+      .tag-row li { font-size: 13px; padding: 3px 12px; border-radius: 980px; border: 1px solid var(--line); color: var(--muted); }
+    </style>
+  </body>
+</html>
