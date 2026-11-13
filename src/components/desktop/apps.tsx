@@ -1,6 +1,8 @@
 import type { ComponentChildren } from 'preact';
 import { projects, site } from '../../data/projects';
 import { work, education, clubs } from '../../data/resume';
+import Baseball from './apps/Baseball';
+import Concerts from './apps/Concerts';
 
 export type AppId = 'welcome' | 'projects' | 'notes' | 'baseball' | 'concerts' | 'music' | 'resume' | 'mail';
 
@@ -97,9 +99,9 @@ export const apps: AppDef[] = [
     glyph: '⚾',
     gradient: 'linear-gradient(160deg,#f87171,#b91c1c)',
     dock: true,
-    width: 600,
-    height: 420,
-    Content: () => <Soon what="Angels analytics: dashboards and experiments built with SQL and R." />,
+    width: 900,
+    height: 640,
+    Content: () => <Baseball />,
   },
   {
     id: 'concerts',
@@ -107,9 +109,9 @@ export const apps: AppDef[] = [
     glyph: '🎟️',
     gradient: 'linear-gradient(160deg,#a78bfa,#7c3aed)',
     dock: true,
-    width: 600,
-    height: 420,
-    Content: () => <Soon what="Every show I've been to as a sortable timeline: Zedd, Kygo, Morgan Wallen, Fly By Midnight and more." />,
+    width: 620,
+    height: 560,
+    Content: () => <Concerts />,
   },
   {
     id: 'music',

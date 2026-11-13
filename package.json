@@ -11,6 +11,11 @@
   "dependencies": {
     "@astrojs/preact": "^6.1.5",
     "astro": "^7.4.11",
+    "dompurify": "^3.4.17",
+    "marked": "^18.2.0",
     "preact": "^11.2.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.161.0"
   }
 }

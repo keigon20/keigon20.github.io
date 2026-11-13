@@ -1,0 +1,34 @@
+CREATE TABLE posts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  slug TEXT NOT NULL UNIQUE,
+  title TEXT NOT NULL,
+  kind TEXT NOT NULL DEFAULT 'post',
+  body TEXT NOT NULL DEFAULT '',
+  published INTEGER NOT NULL DEFAULT 0,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE concerts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  artist TEXT NOT NULL,
+  venue TEXT NOT NULL DEFAULT '',
+  city TEXT NOT NULL DEFAULT '',
+  date TEXT NOT NULL,
+  rating INTEGER,
+  notes TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE rounds (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  date TEXT NOT NULL,
+  course TEXT NOT NULL,
+  tees TEXT NOT NULL DEFAULT '',
+  rating REAL NOT NULL,
+  slope INTEGER NOT NULL,
+  score INTEGER NOT NULL,
+  pcc INTEGER NOT NULL DEFAULT 0,
+  notes TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
