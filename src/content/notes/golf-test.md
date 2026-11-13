@@ -3,7 +3,7 @@ title: Golf test
 date: 2026-11-13
 summary: some summary
 kind: post
-draft: true
+draft: false
 ---
 abcde
 
