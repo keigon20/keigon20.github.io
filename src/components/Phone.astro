@@ -1,0 +1,10 @@
+---
+interface Props { cycle?: boolean; label: string }
+const { cycle = false, label } = Astro.props;
+---
+<div class:list={['phone', { cycle }]} role="img" aria-label={label}>
+  <div class="phone-screen">
+    <div class="phone-notch" aria-hidden="true"></div>
+    <slot />
+  </div>
+</div>

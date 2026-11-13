@@ -1,0 +1,17 @@
+---
+import Desktop from '../components/desktop/Desktop';
+import { site } from '../data/projects';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{site.name} — I make software and apps</title>
+    <meta name="description" content="Keigo Noguchi's desktop: software and apps, baseball analytics, concert history and more." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Desktop client:load />
+  </body>
+</html>

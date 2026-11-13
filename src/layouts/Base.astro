@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import { site } from '../data/projects';
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/classic" aria-label={`${site.name}, home`}>
+          <span class="brand-dot" aria-hidden="true"></span>{site.name}
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#beyond">Beyond the code</a></li>
+            <li><a href="/">Desktop</a></li>
+            <li><a class="cta" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main"><slot /></main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {site.name}</span>
+        <span>{site.location}</span>
+      </div>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var els = document.querySelectorAll('[data-reveal]');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+          });
+        }, { threshold: 0.15 });
+        els.forEach(function (e) { io.observe(e); });
+      })();
+    </script>
+  </body>
+</html>

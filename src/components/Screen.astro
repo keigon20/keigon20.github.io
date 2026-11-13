@@ -1,0 +1,19 @@
+---
+import type { Project } from '../data/projects';
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+<div class="screen" style={`background:${project.gradient}`}>
+  {project.screenshot ? (
+    <img src={project.screenshot} alt={`${project.name} app screenshot`} loading="lazy" />
+  ) : (
+    <>
+      <div class="screen-title">{project.name}</div>
+      <div class="screen-sub">{project.tagline}</div>
+      <div class="screen-card"><i></i><i></i><i></i></div>
+      <div class="screen-card"><i></i><i></i><i></i></div>
+      <div class="screen-card"><i></i><i></i><i></i></div>
+      <div class="screen-note">Screenshot coming soon</div>
+    </>
+  )}
+</div>

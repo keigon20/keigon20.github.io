@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import Phone from '../components/Phone.astro';
+import Screen from '../components/Screen.astro';
+import { projects, interests, site } from '../data/projects';
+---
+<Base
+  title={`${site.name} — I make software and apps`}
+  description="Keigo Noguchi is a software developer building mobile and data apps, from concert journals to golf analytics."
+>
+  <section class="hero" id="top">
+    <div class="container">
+      <p class="eyebrow">{site.name}</p>
+      <h1>I make <span class="grad">software and apps.</span></h1>
+      <p class="lede">
+        Computer Science graduate building mobile apps and data tools, from a social concert journal to a golf handicap tracker.
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="#work">See my work</a>
+        <a class="button" href="#contact">Get in touch</a>
+      </div>
+      <div class="hero-phone">
+        <Phone cycle label="Screens from Setly, TitanBuddy and Golf Handicap">
+          {projects.map((p) => <Screen project={p} />)}
+        </Phone>
+      </div>
+    </div>
+  </section>
+
+  <div id="work">
+    {projects.map((p, i) => (
+      <section class:list={['feature', { flip: i % 2 === 1 }]} id={p.id}>
+        <div class="container feature-grid">
+          <div class="feature-copy" data-reveal>
+            <p class="feature-kicker">{p.kicker}</p>
+            <h2>{p.name}</h2>
+            <p>{p.description}</p>
+            <ul class="tags" aria-label="Technologies">
+              {p.tags.map((t) => <li>{t}</li>)}
+            </ul>
+            {p.caseStudy ? <a class="button" href={p.caseStudy}>Read the case study</a> : <span class="soon">Case study coming soon</span>}
+            {p.code && <> <a class="button" href={p.code}>View code</a></>}
+          </div>
+          <div class="feature-phone" data-reveal>
+            <Phone label={`${p.name} app preview`}><Screen project={p} /></Phone>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <section class="beyond" id="beyond">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Beyond the code.</h2>
+      <p class="section-sub" data-reveal>The things I’m into when I’m not building.</p>
+      <div class="tiles">
+        {interests.map((t) => (
+          <article class="tile" data-reveal>
+            <span class="tile-glyph" aria-hidden="true">{t.glyph}</span>
+            <h3>{t.title}</h3>
+            <p>{t.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container" data-reveal>
+      <h2 class="section-title">Let’s build something.</h2>
+      <p class="section-sub">Open to full-time roles and collaborations.</p>
+      <a class="button primary" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </section>
+</Base>
